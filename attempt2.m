@@ -70,18 +70,26 @@ for i = 1:length(visitsSorted.Date)
 end
 
 %% find totals for each time of day
-
-for i = 1: length(visit2006.Date)
+avgVisits2006 = generateAverageTable(visit2006);
+avgVisits2007 = generateAverageTable(visit2007);
+avgVisits2008 = generateAverageTable(visit2008);
+avgVisits2009 = generateAverageTable(visit2009);
+avgVisits2010 = generateAverageTable(visit2010);
+avgVisits2011 = generateAverageTable(visit2011);
+avgVisits2012 = generateAverageTable(visit2012);
+avgVisits2013 = generateAverageTable(visit2013);
+avgVisits2014 = generateAverageTable(visit2014);
+avgVisits2015 = generateAverageTable(visit2015);
 
 
 %% Save to files
-writetable(visit2006,'2006.csv');
-writetable(visit2007,'2007.csv');
-writetable(visit2008,'2008.csv');
-writetable(visit2009,'2009.csv');
-writetable(visit2010,'2010.csv');
-writetable(visit2011,'2011.csv');
-writetable(visit2012,'2012.csv');
-writetable(visit2013,'2013.csv');
-writetable(visit2014,'2014.csv');
-writetable(visit2015,'2015.csv');
+csvwrite('avg2006.csv',avgVisits2006);
+csvwrite('avg2007.csv',avgVisits2007);
+csvwrite('avg2008.csv',avgVisits2008);
+csvwrite('avg2009.csv',avgVisits2009);
+csvwrite('avg2010.csv',avgVisits2010);
+csvwrite('avg2011.csv',avgVisits2011);
+csvwrite('avg2012.csv',avgVisits2012);
+csvwrite('avg2013.csv',avgVisits2013);
+csvwrite('avg2014.csv',avgVisits2014);
+csvwrite('avg2015.csv',avgVisits2015);
