@@ -37,22 +37,26 @@ class Data:
                             ' Heritage Collections Entry', ' John Oxley Collection']}
         for time in range(24*365*yrs):
             self.times.append(copy.deepcopy(self.places))
+        inds = []
+        for row in range(int(len(self.data)/5)):
+            data = self.data.loc[row]
+            yr = int(data.Year)
+            hr = int(data.Time[0:2])
+            month = int(data.Month)
+            d = int(data.Day)
+            m = 0
+            for i in range(month)[1:]:
+                if i == 2:
+                    m += 28
+                elif i in [4,6,11,9]:
+                    m += 30
+                else:
+                    m += 31
             
-
+            ind = (yr - 2006)*(24*365) + (m+d-1)*24 + hr
+            print(ind)
+            self.times[ind][data.Room] = data.Entries
+            
 if __name__=="__main__":
     data = Data("refined.csv")
-    month = 1
-    yr = 2006
-    hr = 0
-    d = 1
-    m = 0
-    for i in range(month)[1:]:
-        
-        if i == 2:
-            m += 28
-        elif i in [4,6,11,9]:
-            m += 30
-        else:
-            m += 31
-    ind = (yr - 2006)*(24*365) + (m+d-1)*24 + hr
     
