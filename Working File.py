@@ -35,6 +35,8 @@ class Data:
                              ' The Library Shop'], "2": [' SLQ Indemnified Gallery'],
                         "3":[' Micrographics'], "4":[' Phillip Bacon Gallery',
                             ' Heritage Collections Entry', ' John Oxley Collection']}
+                        
+    
         for time in range(24*365*yrs):
             self.times.append(copy.deepcopy(self.places))
         inds = []
@@ -54,9 +56,17 @@ class Data:
                     m += 31
             
             ind = (yr - 2006)*(24*365) + (m+d-1)*24 + hr
-            print(ind)
             self.times[ind][data.Room] = data.Entries
-            
+        print(len(self.times))
+        topop = []
+        for ind in range(len(self.times)):
+            vals = list(set(self.times[ind].values()))
+            if len(vals) == 1 and vals[0] == 0:
+                topop.append(ind)
+        popper = len(topop)
+        for i in range(popper):
+            self.times.pop(popper - (i+1))
+        
 if __name__=="__main__":
     data = Data("refined.csv")
     
